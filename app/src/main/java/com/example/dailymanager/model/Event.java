@@ -1,21 +1,29 @@
-package com.example.dailymanager;
+package com.example.dailymanager.model;
 
+/*
+    DailyManagerApp.pdf - 2.
+    Erstellt eine Klasse Event, mit allen Daten als Variablen, die der Nutzer
+    in in der AddEntryActivity eingeben soll. Überschreibt auch die toString-Methode.
+ */
 import java.io.Serializable;
 import java.util.Calendar;
 
 public class Event implements Serializable{
 
+    // options to set on reminderOption
     public static final int NO_REMIND = 0;
     public static final int REMIND_5_MIN_BEFORE = 1;
     public static final int REMIND_15_MIN_BEFORE = 2;
     public static final int REMIND_1_HOUR_BEFORE = 3;
     public static final int REMIND_1_DAY_BEFORE = 4;
 
+    // init variables for AddEntryActivity
     private Calendar startTime;
     private String eventName;
     private String location;
     private String note;
     private int remindOption;
+
 
     public Event(Calendar startTime, String eventName) {
         this.startTime = startTime;
@@ -35,6 +43,23 @@ public class Event implements Serializable{
         this.location = location;
         this.note = note;
         this.remindOption = remindOption;
+    }
+
+
+    public String getTime(){
+        return String.format("%d:%d", startTime.get(Calendar.HOUR),startTime.get(Calendar.MINUTE));
+    }
+    public void setTime(int hour, int min){
+        startTime.set(Calendar.HOUR, hour);
+        startTime.set(Calendar.MINUTE, min);
+    }
+    public String getDate () {
+        return String.format("%d:%d:%d", startTime.get(Calendar.DAY_OF_MONTH),startTime.get(Calendar.MONTH) + 1, startTime.get(Calendar.YEAR));
+    }
+    public void setDate (int year, int month, int day){
+        startTime.set(Calendar.YEAR, year);
+        startTime.set(Calendar.MONTH, month);
+        startTime.set(Calendar.DAY_OF_MONTH, day);
     }
 
     public void setStartTime(int year, int month, int day, int hour, int min) {
@@ -112,5 +137,4 @@ public class Event implements Serializable{
                 "\nremindOption=" + remindOption +
                 '}');
     }
-
 }

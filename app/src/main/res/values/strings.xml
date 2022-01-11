@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DailyManager</string>
+    <string name="Event">default_name</string>
+    <string name="Date">default_Date</string>
+    <string name="Time">default_Time</string>
+    <string name="Location">default_Location</string>
+    <string name="note">default_Note</string>
 </resources>

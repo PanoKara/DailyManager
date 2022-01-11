@@ -1,4 +1,4 @@
-package com.example.dailymanager;
+package com.example.dailymanager.controller;
 
 
 import android.content.Context;
@@ -26,7 +26,6 @@ public class ReadService {
             e.printStackTrace();
         }
         return object;
-
     }
 
 }
