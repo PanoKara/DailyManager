@@ -1,4 +1,4 @@
-package com.example.dailymanager.controller;
+package com.example.dailymanager;
 
 
 import android.content.Context;

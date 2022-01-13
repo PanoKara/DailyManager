@@ -1,4 +1,4 @@
-package com.example.dailymanager.view;
+package com.example.dailymanager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,10 +6,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.dailymanager.R;
-import com.example.dailymanager.controller.MyController;
-import com.example.dailymanager.model.Event;
 
 import java.util.ArrayList;
 
@@ -20,7 +16,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private ArrayList<Event> events;
 
     //TODO put other Objects to the list and rename it
-    public MyAdapter(MyController controller, ArrayList<Event>events) {
+    public MyAdapter(ArrayList<Event>events) {
         this.events = events;
     }
 
@@ -44,11 +40,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         //here are the views from R.layout.item connected to the data
         //TODO please call the view methods of MyViewHolder
         //TODO fill the views with data from your arraylist
-        holder.getTextEventView().setText(String.valueOf(events.get(position).getEventName()));
-        holder.getTextDateView().setText(String.valueOf(events.get(position).getDate()));
-        holder.getTextTimeView().setText(String.valueOf(events.get(position).getTime()));
-        holder.getTextLocateView().setText(String.valueOf(events.get(position).getLocation()));
-        holder.getTextNoteView().setText(String.valueOf(events.get(position).getNote()));
+        holder.getTextItemEvent().setText(events.get(position).getEventName());
+        holder.getTextItemDate().setText(events.get(position).getDate());
+        holder.getTimeTextItem().setText(events.get(position).getTime());
+        holder.getTextItemLocation().setText(events.get(position).getLocation());
+        holder.getNoteTextItem().setText(events.get(position).getNote());
     }
 
     @Override

@@ -1,19 +1,13 @@
-package com.example.dailymanager.view;
+package com.example.dailymanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
-import com.example.dailymanager.R;
-import com.example.dailymanager.controller.MyController;
-import com.example.dailymanager.controller.ReadService;
-import com.example.dailymanager.controller.WriteService;
-import com.example.dailymanager.model.Event;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -22,6 +16,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "DailyMGMT";
+    private ArrayList<Event> events;
     private MyController controller;
 
     @Override
@@ -31,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new MyController(this);
 
+        Object object = ReadService.readObject(MainActivity.this);
+        if(object instanceof ArrayList){
+            events = (ArrayList<Event>) object;
+        }else{
+            events = new ArrayList<>();
+        }
+
+
          /* DailyManagerApp.pdf - 3.
             Fügt eurer CalenderView in der MainActivity der onDateChangeListener hinzu
             Speichert die Änderungen zunächst in einer lokalen Variable.
@@ -38,17 +41,26 @@ public class MainActivity extends AppCompatActivity {
         CalendarView calendarView = findViewById(R.id.calendarViewMain);
         calendarView.setOnDateChangeListener((CalendarView view, int year, int month, int dayOfMonth) -> {
 
-            controller.setSelectedDate(year, month, dayOfMonth);
+            ArrayList<Event> eventOfDay = new ArrayList<>();
+            for (Event event : events) {
+                if(event.getStartTime().equals(String.format(Locale.GERMANY,"%d.%d.%d.",dayOfMonth,month ,year))){
+                    Log.i(TAG, event.toString());
+                    eventOfDay.add(event);
+                }
+            }
+            controller.setEventList(eventOfDay);
         });
 
         //FloatingActionButton-Snipped from DailyManagerApp.pdf
         FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(view -> {
-
-                controller.addNewEvent();
+            Toast.makeText(MainActivity.this, "Want to add a new entry", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, AddEntryActivity.class);
+            startActivity(intent);
+            finish();
         });
 
-        /*  DailyManagerApp.pdf - 10.
+        /*  DailyManagerApp.pdf - 10. - 11
             Lest nun in der onCreate-Methode mit Hilfe von der ReadService-Klasse das geschriebene Objekt wieder ein.
             Überprüft, ob das gelesene Objekt null ist. Falls nicht, überprüft, ob dieses eine Instanz vor Klasse Event ist und casted es gegebenenfalls.
          */
@@ -59,6 +71,5 @@ public class MainActivity extends AppCompatActivity {
             calendarView.setDate( ( (Event)obj ).getStartTime().getTimeInMillis() );
             Log.i("Ausgabe","Calender wurde gesetzt");
         }
-
     }
 }

@@ -1,4 +1,4 @@
-package com.example.dailymanager.model;
+ package com.example.dailymanager;
 
 /*
     DailyManagerApp.pdf - 2.
@@ -24,7 +24,7 @@ public class Event implements Serializable{
     private String note;
     private int remindOption;
 
-
+    //Constructs
     public Event(Calendar startTime, String eventName) {
         this.startTime = startTime;
         this.eventName = eventName;
@@ -45,7 +45,7 @@ public class Event implements Serializable{
         this.remindOption = remindOption;
     }
 
-
+    //getter - setter
     public String getTime(){
         return String.format("%d:%d", startTime.get(Calendar.HOUR),startTime.get(Calendar.MINUTE));
     }

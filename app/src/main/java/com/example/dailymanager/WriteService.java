@@ -1,9 +1,7 @@
-package com.example.dailymanager.controller;
+package com.example.dailymanager;
 
 
 import android.content.Context;
-
-import com.example.dailymanager.controller.ReadService;
 
 import java.io.File;
 import java.io.FileOutputStream;

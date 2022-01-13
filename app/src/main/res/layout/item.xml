@@ -6,12 +6,12 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textEventView"
+        android:id="@+id/eventTextItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Event"
+        android:text="@string/default_event"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -23,45 +23,45 @@
         app:layout_constraintVertical_bias="0.025" />
 
     <TextView
-        android:id="@+id/textDateView"
+        android:id="@+id/dateTextItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"
-        app:layout_constraintBottom_toBottomOf="@+id/textEventView"
+        android:text="@string/default_date"
+        app:layout_constraintBottom_toBottomOf="@+id/eventTextItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.162"
-        app:layout_constraintStart_toEndOf="@+id/textEventView"
-        app:layout_constraintTop_toTopOf="@+id/textEventView"
+        app:layout_constraintStart_toEndOf="@+id/eventTextItem"
+        app:layout_constraintTop_toTopOf="@+id/eventTextItem"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textTimeView"
+        android:id="@+id/timeTextItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time"
-        app:layout_constraintBottom_toBottomOf="@+id/textDateView"
+        android:text="@string/default_time"
+        app:layout_constraintBottom_toBottomOf="@+id/dateTextItem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textDateView"
-        app:layout_constraintTop_toTopOf="@+id/textDateView" />
+        app:layout_constraintStart_toEndOf="@+id/dateTextItem"
+        app:layout_constraintTop_toTopOf="@+id/dateTextItem" />
 
     <TextView
-        android:id="@+id/textLocateView"
+        android:id="@+id/locationTextItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Location"
+        android:text="@string/default_location"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textDateView"
-        app:layout_constraintTop_toBottomOf="@+id/textDateView" />
+        app:layout_constraintStart_toStartOf="@+id/dateTextItem"
+        app:layout_constraintTop_toBottomOf="@+id/dateTextItem" />
 
     <TextView
-        android:id="@+id/textNoteView"
+        android:id="@+id/noteTextItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Note"
-        app:layout_constraintBottom_toBottomOf="@+id/textLocateView"
-        app:layout_constraintStart_toStartOf="@+id/textTimeView"
-        app:layout_constraintTop_toTopOf="@+id/textLocateView" />
+        android:text="@string/default_note"
+        app:layout_constraintBottom_toBottomOf="@+id/locationTextItem"
+        app:layout_constraintStart_toStartOf="@+id/timeTextItem"
+        app:layout_constraintTop_toTopOf="@+id/locationTextItem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
